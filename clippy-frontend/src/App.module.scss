@@ -1,0 +1,10 @@
+.appWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5%;
+
+  @media (max-width: 600px) {
+    padding-top: 2%;
+  }
+}
