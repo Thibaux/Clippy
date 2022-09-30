@@ -1,13 +1,16 @@
 package main
 
 import (
-	"fmt"
-
-	"rsc.io/quote"
+	"github.com/gin-gonic/gin"
 )
 
-func main() {
-	fmt.Println("Hello, World!")
 
-	fmt.Println(quote.Glass())
+func main() {
+    getAlbums := host.getAlbums()
+    
+	router := gin.Default()
+    router.GET("/albums", )
+    router.Run("localhost:8080")
 }
+
+
