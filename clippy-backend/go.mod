@@ -26,6 +26,7 @@ require (
 
 require (
 	github.com/gin-gonic/gin v1.8.1
+	github.com/gorilla/mux v1.8.0
 	golang.org/x/text v0.3.6 // indirect
 	rsc.io/sampler v1.3.0 // indirect
 )
