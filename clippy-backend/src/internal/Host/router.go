@@ -7,17 +7,11 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-    "github.com/joho/godotenv"
 
 	Handlers "backend/internal/Host/Handlers"
 )
 
 func Router() {
-	err := godotenv.Load()
-	if err != nil {
-	  log.Fatal("Error loading .env file")
-	}
-  
 	router := mux.NewRouter().StrictSlash(true)
 
 	router.HandleFunc("/", Handlers.GetHealth)
