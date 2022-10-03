@@ -10,4 +10,4 @@
 # production
 /build
 
-/pkg
+pkg
