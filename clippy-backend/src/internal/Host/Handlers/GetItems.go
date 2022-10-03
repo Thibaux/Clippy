@@ -3,7 +3,8 @@ package Handlers
 import (
 	"fmt"
 	"net/http"
-	"encoding/json"
+
+	Services "backend/internal/Services"
 )
 
 type Article struct {
@@ -23,11 +24,19 @@ func GetItems(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	jsonBytes, err := json.Marshal(Articles)
-	if err != nil {
-		fmt.Printf("Error")
-	}
+	// jsonBytes, err := json.Marshal(Articles)
+	// if err != nil {
+	// 	fmt.Printf("Error")
+	// }
 
+	Services.GetItems()
+
+	// if err != nil {
+	// 	fmt.Printf("Noo")
+	// }
+
+	// fmt.Printf(result)
+	
 	w.WriteHeader(http.StatusOK)
-	w.Write(jsonBytes)
+	// w.Write(jsonBytes)
 }
