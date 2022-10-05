@@ -1,48 +1,45 @@
 package Services
 
 import (
+	"encoding/json"
 	"fmt"
+	"log"
 
+	"github.com/gomodule/redigo/redis"
 	"github.com/nitishm/go-rejson/v4"
 
-	Models	"backend/internal/Infrastructure/Models"
-	// Redis 	"backend/internal/Infrastructure/Redis"
-	// Utils 	"backend/internal/Services/Utils"
+	Models "backend/internal/Infrastructure/Models"
+	Utils "backend/internal/Services/Utils"
 )
 
-type Item struct {
-	id		string
-	name	string
-}
-
 func GetAllItems(rh *rejson.Handler) Models.Items {
-	fmt.Println("hsdf")
-
 	var items Models.Items
 
-	i := Models.Item{Id: "123", Name: "thisName"}
-
-	items = append(items, i)
-
-	Ii := Models.Item
-
-	res, err := rh.JSONSet("items", ".", Ii)
+	res, err := redis.Bytes(rh.JSONGet("items", "."))
 	if err != nil {
 		fmt.Printf("Failed to JSONGet")
 		return items
 	}
-	fmt.Println("obj:", res)
+	Utils.HandleError(err)
 
-	// res, err := rh.JSONGet("items", ".")
-	// if err != nil {
-	// 	fmt.Printf("Failed to JSONGet")
-	// 	return items
-	// }
+	error := json.Unmarshal(res, &items)
+	if error != nil {
+		log.Fatalf("Failed to JSON Unmarshal")
+	}
 
-	fmt.Println("got obj:", res)
+	return items
+}
 
-	// Utils.HandleError(err)
-	
+func CreateOneItem(rh *rejson.Handler, item Models.Item) Models.Items {
+	items := GetAllItems(rh)
+	items = append(items, item)
+
+	res, err := rh.JSONSet("items", ".", items)
+	if err != nil {
+		fmt.Printf("Failed to JSONGet")
+	}
+	fmt.Println(res)
+	Utils.HandleError(err)
 
 	return items
 }
