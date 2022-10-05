@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
 
@@ -13,11 +14,13 @@ import (
 func Router() {
 	router := mux.NewRouter().StrictSlash(true)
 
-	router.HandleFunc("/", Handlers.GetHealth)
-	router.HandleFunc("/health", Handlers.GetHealth)
-	router.HandleFunc("/items", Handlers.GetItems)
+	router.HandleFunc("/", Handlers.GetHealth).Methods("GET")
+	router.HandleFunc("/health", Handlers.GetHealth).Methods("GET")
+	router.HandleFunc("/items", Handlers.GetItems).Methods("GET")
+	router.HandleFunc("/items", Handlers.CreateItem).Methods("POST")
 
-	var port = ":8080"
+	var port = os.Getenv("PORT")
+
 	fmt.Printf("Server starting on port: %v", port)
-	log.Fatal(http.ListenAndServe(port, router))
+	log.Fatal(http.ListenAndServe(":" + port, router))
 }

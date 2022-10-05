@@ -6,7 +6,7 @@ import (
 )
 
 func GetHealth(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Endpoint Hit: getHealth")
+	fmt.Println("Endpoint Hit: GetHealth")
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(`{"status": "API is healthy"}`))
 }
