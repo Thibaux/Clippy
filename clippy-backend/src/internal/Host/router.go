@@ -21,5 +21,5 @@ func Router() {
 	var port = os.Getenv("PORT")
 
 	fmt.Printf("Server starting on port: %v", port)
-	log.Fatal(http.ListenAndServe(port, router))
+	log.Fatal(http.ListenAndServe(":" + port, router))
 }
