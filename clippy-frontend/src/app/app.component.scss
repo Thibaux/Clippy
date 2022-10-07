@@ -1,0 +1,36 @@
+.app-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10vh;
+  width: 100vw;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: auto;
+  width: 60em;
+  background-color: whitesmoke;
+  padding-left: 5em;
+  //border-radius: 0em;
+
+  .items-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5em;
+    padding: 2em;
+    width: 40em;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    max-width: 960px;
+    align-items: center;
+    background-color: whitesmoke;
+  }
+}
