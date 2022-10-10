@@ -1,6 +1,11 @@
 // Normalize css
 @import "~normalize.css/normalize.css";
 
+// Tailwind
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
