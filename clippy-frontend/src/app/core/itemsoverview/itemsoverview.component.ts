@@ -15,7 +15,10 @@ export class ItemsoverviewComponent implements OnInit {
     this.items = [
       {
         id: '123',
-        name: 'name',
+        title: 'title',
+        content: 'content',
+        updatedAt: '123456',
+        createdAt: '123456',
       },
     ];
     console.log(this.items);
