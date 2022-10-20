@@ -1,8 +1,8 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
-
+import "flowbite";
+import "./styles.css";
 import App from "./App.vue";
-
 import "./styles/main.css";
 
 const app = createApp(App);
