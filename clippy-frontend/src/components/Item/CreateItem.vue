@@ -3,17 +3,17 @@
 <template>
     <div class="create-item-wrapper">
         <div
-            class="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700"
+            class="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
         >
             <form class="space-y-6" action="#">
                 <h5 class="text-xl font-medium text-gray-900 dark:text-white">
-                    Sign in to our platform
+                    New item
                 </h5>
                 <div>
                     <label
-                        for="email"
+                        for="title"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                        >Your email</label
+                        >Title</label
                     >
                     <input
                         type="email"
