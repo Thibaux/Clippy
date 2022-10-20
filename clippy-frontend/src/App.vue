@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ItemsOverviewView } from "./views";
+import { ItemsOverviewView, SideBarView } from "./views";
 </script>
 
 <template>
   <div class="app">
+    <SideBarView></SideBarView>
     <ItemsOverviewView></ItemsOverviewView>
   </div>
 </template>
@@ -11,9 +12,9 @@ import { ItemsOverviewView } from "./views";
 <style scoped>
 .app {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 75em;
 }
 
 @media (min-width: 1024px) {

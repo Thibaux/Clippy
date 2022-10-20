@@ -4,6 +4,6 @@ import ItemsOverview from "../components/ItemsOverview.vue";
 
 <template>
   <main>
-    <ItemsOverview msg="sadfsfs" />
+    <ItemsOverview />
   </main>
 </template>
