@@ -1,9 +1,26 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const contentFieldHasNoError = true;
+
+const suggestedTags = [
+    "tag1",
+    "tag2",
+    "tag1",
+    "tag2",
+    "tag1",
+    "tag1",
+    "tag2",
+    "tag1",
+    "tag2",
+    "tag2",
+    "tag1",
+    "tag2",
+];
+</script>
 
 <template>
     <div class="create-item-wrapper">
         <div
-            class="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+            class="md:w-full p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
         >
             <form class="space-y-6" action="#">
                 <h5 class="text-xl font-medium text-gray-900 dark:text-white">
@@ -12,71 +29,80 @@
                 <div>
                     <label
                         for="title"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300 px-2"
                         >Title</label
                     >
                     <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        placeholder="name@company.com"
-                        required=""
+                        name="title"
+                        id="title"
+                        class="text-sm rounded-md w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        placeholder="useful react resource..."
                     />
                 </div>
                 <div>
                     <label
-                        for="password"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                        >Your password</label
+                        for="content"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300 px-2"
+                        >Content</label
                     >
                     <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="••••••••"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        required=""
+                        v-if="contentFieldHasNoError"
+                        class="text-sm rounded-md w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        name="content"
+                        id="content"
+                        placeholder="https://beta.reactjs.org/learn"
                     />
-                </div>
-                <div class="flex items-start">
-                    <div class="flex items-start">
-                        <div class="flex items-center h-5">
-                            <input
-                                id="remember"
-                                type="checkbox"
-                                value=""
-                                class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                                required=""
-                            />
-                        </div>
-                        <label
-                            for="remember"
-                            class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                            >Remember me</label
-                        >
+                    <div v-else>
+                        <input
+                            type="text"
+                            id="username-error"
+                            class="bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400"
+                            placeholder=""
+                        />
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+                            <span class="font-medium">Oops!</span> Please fill
+                            in the content field taken!
+                        </p>
                     </div>
-                    <a
-                        href="#"
-                        class="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
-                        >Lost Password?</a
-                    >
                 </div>
-                <button
-                    type="submit"
-                    class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                    Login to your account
-                </button>
-                <div
-                    class="text-sm font-medium text-gray-500 dark:text-gray-300"
-                >
-                    Not registered?
-                    <a
-                        href="#"
-                        class="text-blue-700 hover:underline dark:text-blue-500"
-                        >Create account</a
+                <div>
+                    <label
+                        for="tags"
+                        class="mb-2 text-sm font-medium text-gray-900 dark:text-gray-300 px-2"
+                        >Tags</label
                     >
+                    <p
+                        id="floating-helper-text"
+                        class="flex justify-end pr-2.5 text-xs text-gray-500 dark:text-gray-400"
+                    >
+                        Hit enter to add tag
+                    </p>
+                    <input
+                        class="mb-4 text-sm rounded-md w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                        name="content"
+                        id="content"
+                        placeholder="react"
+                    />
+                    <label
+                        for="remember"
+                        class="mt-10 text-sm font-medium text-gray-900 dark:text-gray-300 px-2"
+                        >Suggested tags</label
+                    >
+                    <div class="flex flex-wrap m:justify-center">
+                        <div v-for="(tag, index) in suggestedTags" :key="index">
+                            <div class="pr-4">
+                                {{ tag }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end w-full">
+                    <button
+                        type="submit"
+                        class="w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                        Save item
+                    </button>
                 </div>
             </form>
         </div>
