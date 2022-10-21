@@ -1,20 +1,9 @@
 <script setup lang="ts">
-const contentFieldHasNoError = true;
+import { reactive } from "vue";
+import { useCreateItem } from "@/components/Item/CreateItem/useCreateItem";
 
-const suggestedTags = [
-    "tag1",
-    "tag2",
-    "tag1",
-    "tag2",
-    "tag1",
-    "tag1",
-    "tag2",
-    "tag1",
-    "tag2",
-    "tag2",
-    "tag1",
-    "tag2",
-];
+const createItemState = reactive({ contentFieldHasNoError: true });
+const { newItemState, suggestedTags } = useCreateItem();
 </script>
 
 <template>
@@ -33,8 +22,7 @@ const suggestedTags = [
                         >Title</label
                     >
                     <input
-                        name="title"
-                        id="title"
+                        v-model="newItemState.title"
                         class="text-sm rounded-md w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         placeholder="useful react resource..."
                     />
@@ -46,10 +34,9 @@ const suggestedTags = [
                         >Content</label
                     >
                     <input
-                        v-if="contentFieldHasNoError"
+                        v-if="createItemState.contentFieldHasNoError"
                         class="text-sm rounded-md w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                        name="content"
-                        id="content"
+                        v-model="newItemState.content"
                         placeholder="https://beta.reactjs.org/learn"
                     />
                     <div v-else>
