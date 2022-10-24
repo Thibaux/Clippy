@@ -16,6 +16,7 @@ require (
 	github.com/go-redis/redis/v8 v8.11.5 // indirect
 	github.com/go-redis/redis/v9 v9.0.0-beta.2 // indirect
 	github.com/gomodule/redigo v1.8.9
+	github.com/google/uuid v1.3.0
 	github.com/joho/godotenv v1.4.0 // indirect
 	github.com/nitishm/go-rejson/v4 v4.1.0 // indirect
 	go.opentelemetry.io/otel v0.15.0 // indirect

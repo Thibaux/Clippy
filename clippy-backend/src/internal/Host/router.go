@@ -8,16 +8,20 @@ import (
 
 	"github.com/gorilla/mux"
 
-	Handlers "backend/internal/Host/Handlers"
+	HealthHandler "backend/internal/Host/Handlers/Health"
+	ItemsHandler "backend/internal/Host/Handlers/Items"
+	TagsHandlers "backend/internal/Host/Handlers/Tags"
 )
 
 func Router() {
 	router := mux.NewRouter().StrictSlash(true)
 
-	router.HandleFunc("/", Handlers.GetHealth).Methods("GET")
-	router.HandleFunc("/health", Handlers.GetHealth).Methods("GET")
-	router.HandleFunc("/items", Handlers.GetItems).Methods("GET")
-	router.HandleFunc("/items", Handlers.CreateItem).Methods("POST")
+	router.HandleFunc("/", HealthHandler.GetHealth).Methods("GET")
+	router.HandleFunc("/health", HealthHandler.GetHealth).Methods("GET")
+	router.HandleFunc("/items", ItemsHandler.GetItems).Methods("GET")
+	router.HandleFunc("/items", ItemsHandler.CreateItem).Methods("POST")
+	router.HandleFunc("/tags", TagsHandlers.GetTags).Methods("GET")
+	router.HandleFunc("/tags", TagsHandlers.UpdateTag).Methods("POST")
 
 	var port = os.Getenv("PORT")
 
