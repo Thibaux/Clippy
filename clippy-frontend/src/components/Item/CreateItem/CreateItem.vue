@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { reactive } from "vue";
 import { useCreateItem } from "@/components/Item/CreateItem/useCreateItem";
 
-const createItemState = reactive({ contentFieldHasNoError: true });
-const { newItemState, suggestedTags } = useCreateItem();
+const { newItemErrors, newItemState, suggestedTags, submitNewItem } =
+    useCreateItem();
 </script>
 
 <template>
@@ -34,7 +33,7 @@ const { newItemState, suggestedTags } = useCreateItem();
                         >Content</label
                     >
                     <input
-                        v-if="createItemState.contentFieldHasNoError"
+                        v-if="newItemErrors.contentError"
                         class="text-sm rounded-md w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                         v-model="newItemState.content"
                         placeholder="https://beta.reactjs.org/learn"
@@ -85,6 +84,7 @@ const { newItemState, suggestedTags } = useCreateItem();
                 </div>
                 <div class="flex justify-end w-full">
                     <button
+                        @click="submitNewItem(newItemState)"
                         type="submit"
                         class="w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
